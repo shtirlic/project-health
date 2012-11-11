@@ -19,9 +19,11 @@ def show_project_stats(repo)
   puts "Project Health Version: #{ProjectHealth::VERSION}"
   puts
   puts "Showing project health for #{repo}"
-  puts
-  project.stats['Project'].each{|c| table c.last}
-  puts
+  project.stats['Project'].each do |c|
+    puts
+    puts c.first
+    table(c.last, headers: false, unicode: true, description: false)
+  end
   puts
 end
 
