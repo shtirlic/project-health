@@ -5,7 +5,6 @@ require 'project-health/project'
 
 module ProjectHealth
   class << self
-    include Config
     def new(*args)
       ProjectHealth::Project.new(*args)
     end

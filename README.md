@@ -69,9 +69,9 @@ From code
 require 'pp'
 require 'project-health'
 
-ProjectHealth.configure do |config|
-  #config.login = ''  # use your github name
-  #config.password = '' # use your github password
+ProjectHealth.config do |c|
+  #c.login = ''  # use your github name
+  #c.password = '' # use your github password
 end
 
 project = ProjectHealth.new('capistrano/capistrano')

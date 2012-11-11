@@ -5,8 +5,8 @@ module ProjectHealth
 
     def initialize(name)
       @oct = Octokit::Client.new(:auto_traversal => true,
-                                 :per_page => 500, :login => Config.login,
-                                 :password=> Config.password)
+                                 :per_page => 500, :login => ProjectHealth.config.login,
+                                 :password=> ProjectHealth.config.password)
       @name = name
       @reports = []
       add_report :basic

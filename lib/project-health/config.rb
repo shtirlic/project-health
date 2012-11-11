@@ -8,10 +8,6 @@ class Numeric
 end
 
 module ProjectHealth
-  module Config
-    mattr_accessor :login, :password
-    def configure
-      yield self
-    end
-  end
+  include ActiveSupport::Configurable
+  config_accessor :login, :password
 end
