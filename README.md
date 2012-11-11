@@ -26,6 +26,14 @@ gem install project-health
 
 From command line
 
+Set GitHub username/password to increase API rates
+
+```bash
+export GITHUB_USERNAME=username
+export GITHUB_PASSWORD=password
+
+```
+
 ```bash
 project-health capistrano/capistrano
 ```
@@ -69,6 +77,7 @@ From code
 require 'pp'
 require 'project-health'
 
+# Set GitHub username/password to increase API rates
 ProjectHealth.config do |c|
   #c.login = ''  # use your github name
   #c.password = '' # use your github password
