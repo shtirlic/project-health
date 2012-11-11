@@ -24,14 +24,13 @@ gem install project-health
 
 ## Usage
 
-From command line
+### From command line:
 
 Set GitHub username/password to increase API rates
 
 ```bash
 export GITHUB_USERNAME=username
 export GITHUB_PASSWORD=password
-
 ```
 
 ```bash
@@ -70,8 +69,7 @@ Pull Requests
 
 ```
 
-
-From code
+### From code:
 
 ```ruby
 require 'pp'
