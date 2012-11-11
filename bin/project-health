@@ -1,0 +1,50 @@
+#!/usr/bin/env ruby
+require 'project-health'
+require 'pp'
+require 'hirb'
+
+def help_general
+  puts "Project Health Version: #{ProjectHealth::VERSION}"
+  puts
+  puts "Usage: project-health username/repo "
+  puts
+  puts "Example: project-health capistrano/capistrano"
+  puts
+  puts
+end
+
+def show_project_stats(repo)
+  extend Hirb::Console
+  project = ProjectHealth.new(repo)
+  puts "Project Health Version: #{ProjectHealth::VERSION}"
+  puts
+  puts "Showing project health for #{repo}"
+  puts
+  project.stats['Project'].each{|c| table c.last}
+  puts
+  puts
+end
+
+begin
+  if $stdin.isatty
+    $stdin.sync = true
+  end
+  if $stdout.isatty
+    $stdout.sync = true
+  end
+  args = *ARGV
+  command = args.shift.strip rescue 'help'
+  if command == 'help'
+    help_general
+  else
+    show_project_stats(command)
+  end
+rescue Interrupt
+  `stty icanon echo`
+  puts "Command cancelled."
+rescue => error
+  puts error
+  exit(1)
+end
+
+

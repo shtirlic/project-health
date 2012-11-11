@@ -1,11 +1,7 @@
 source 'https://rubygems.org'
 
-
-gem 'octokit'
-
-
+gemspec
 
 group :development do
   gem 'pry'
-  gem 'json'
 end
