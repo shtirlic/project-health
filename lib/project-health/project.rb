@@ -11,6 +11,7 @@ module ProjectHealth
       @reports = []
       add_report :basic
       add_report :pull_requests
+      add_report :issues
     end
 
     def add_report(report)
