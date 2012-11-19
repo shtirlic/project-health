@@ -8,6 +8,10 @@ class Numeric
 end
 
 module ProjectHealth
-  include ActiveSupport::Configurable
-  config_accessor :login, :password
+  class Project
+    include ActiveSupport::Configurable
+    config_accessor :login, :password
+    self.login = ENV["GITHUB_USERNAME"]
+    self.password = ENV["GITHUB_PASSWORD"]
+  end
 end

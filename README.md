@@ -76,7 +76,7 @@ require 'pp'
 require 'project-health'
 
 # Set GitHub username/password to increase API rates
-ProjectHealth.config do |c|
+ProjectHealth.configure do |c|
   #c.login = ''  # use your github name
   #c.password = '' # use your github password
 end

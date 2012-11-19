@@ -4,9 +4,9 @@ module ProjectHealth
     attr_reader :name
 
     def initialize(name)
-      @oct = Octokit::Client.new(:auto_traversal => true,
-                                 :per_page => 500, :login => ProjectHealth.config.login,
-                                 :password=> ProjectHealth.config.password)
+      @oct = Octokit::Client.new(auto_traversal: true,
+                                 per_page: 500, login: config.login,
+                                 password: config.password)
       @name = name
       @reports = []
       add_report :basic

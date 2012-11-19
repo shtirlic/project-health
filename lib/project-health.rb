@@ -6,7 +6,10 @@ require 'project-health/project'
 module ProjectHealth
   class << self
     def new(*args)
-      ProjectHealth::Project.new(*args)
+      Project.new(*args)
+    end
+    def configure(&block)
+      Project.configure(&block)
     end
   end
 end

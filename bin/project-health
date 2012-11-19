@@ -15,11 +15,6 @@ end
 
 def show_project_stats(repo)
   extend Hirb::Console
-
-  ProjectHealth.config do |c|
-    c.login    = ENV["GITHUB_USERNAME"]
-    c.password = ENV["GITHUB_PASSWORD"]
-  end
   project = ProjectHealth.new(repo)
   puts "Project Health Version: #{ProjectHealth::VERSION}"
   puts
