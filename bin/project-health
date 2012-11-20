@@ -45,7 +45,7 @@ rescue Interrupt
   `stty icanon echo`
   puts "Command cancelled."
 rescue => error
-  puts error
+  p error
   exit(1)
 end
 
