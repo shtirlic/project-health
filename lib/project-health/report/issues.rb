@@ -42,11 +42,11 @@ module ProjectHealth
     end
 
     def open_time
-      @open_times.inject(:+)
+      @open_times.inject(:+) || 0
     end
 
     def average_open_time
-      open_time / open
+      open_time / open if open > 0
     end
 
     def min_open_time
