@@ -18,12 +18,12 @@ module ProjectHealth
       {
         "Basic" =>
         {
-          "Name" => name,
+          "Name"        => name,
           "Description" => description,
-          "Created" => created,
-          "Last push" => last_push,
-          "Language" => language,
-          "Stars" => stars
+          "Created"     => created,
+          "Last push"   => last_push,
+          "Language"    => language,
+          "Stars"       => stars
         }
        }
     end

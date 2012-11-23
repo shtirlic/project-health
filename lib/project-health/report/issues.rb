@@ -14,19 +14,19 @@ module ProjectHealth
 
     def stats
       {
-        "Issues"=>
+        "Issues" =>
         {
-          'All'      => all,
-          'Open'     => open,
-          'Closed'   => closed,
-          'Open %'   => open_percent.to_f.round(2),
-          'Closed %' => closed_percent.to_f.round(2),
-          'Open/Closed % ratio' => open_closed_ratio.to_f.round(2),
-          'Open time in days' => open_time,
-          'Min open time in days' => min_open_time,
-          'Max open time in days' => max_open_time,
-          'Average days issue is opened' => average_open_time,
-          'Health' => health
+          'All'                           => all,
+          'Open'                          => open,
+          'Closed'                        => closed,
+          'Open %'                        => open_percent.to_f.round(2),
+          'Closed %'                      => closed_percent.to_f.round(2),
+          'Open/Closed % ratio'           => open_closed_ratio.to_f.round(2),
+          'Open time in days'             => open_time,
+          'Min open time in days'         => min_open_time,
+          'Max open time in days'         => max_open_time,
+          'Average days issue is opened'  => average_open_time,
+          'Health'                        => health
         }
       }.delete_if{|k,v| v.kind_of?(Float) && v.nan?}
     end
