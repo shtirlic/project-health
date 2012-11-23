@@ -1,26 +1,31 @@
 module ProjectHealth
   class Project
 
-    attr_reader :name
+    attr_reader :name, :oct_client
 
     def initialize(name)
-      @oct = Octokit::Client.new(auto_traversal: true,
+      @oct_client = Octokit::Client.new(auto_traversal: true,
                                  per_page: 500, login: config.login,
                                  password: config.password)
       @name = name
       @reports = []
-      add_report :basic
-      add_report :pull_requests
-      add_report :issues
+      [:basic, :pull_requests, :issues].map(&method(:add_report))
     end
 
     def add_report(report)
-      @reports << ProjectHealth.const_get("#{report}_report".to_s.camelize).new(@oct, name)
+      @reports << report
+    end
+
+    def delete_report(report)
+      @reports.delete(report)
     end
 
     def stats
       result = {}
-      @reports.map{|x| result.merge!(x.stats) }
+      @reports.map do |x|
+        report = ProjectHealth.const_get("#{x}_report".camelize).new(self)
+        result.merge!(report.stats)
+      end
       { "Project" => result }
     end
 

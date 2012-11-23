@@ -3,10 +3,12 @@ module ProjectHealth
 
     attr_reader :open, :closed, :all
 
-    def initialize(oct, name)
+    def initialize(project)
       @open_times = []
-      @open   = oct.pull_requests(name, :open).tap{|x| x.each(&method(:calc_open_pull_time)) }.count
-      @closed = oct.pull_requests(name, :closed).count
+      @open   = project.oct_client.pull_requests(project.name, :open).tap do |x|
+        x.each(&method(:calc_open_pull_time))
+      end.count
+      @closed = project.oct_client.pull_requests(project.name, :closed).count
       @all    = open + closed
     end
 

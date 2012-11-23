@@ -4,9 +4,9 @@ module ProjectHealth
     attr_reader :name, :title, :language, :stars,
                 :created, :last_push, :description
 
-    def initialize(oct, name)
-      @name        = name
-      repo         = oct.repo(name)
+    def initialize(project)
+      @name        = project.name
+      repo         = project.oct_client.repo(name)
       @language    = repo["language"]
       @stars       = repo["watchers_count"]
       @created     = repo["created_at"]
