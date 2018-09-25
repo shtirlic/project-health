@@ -13,7 +13,7 @@ Gem::Specification.new do |gem|
   gem.homepage      = "https://github.com/shtirlic/project-health"
 
   gem.add_dependency "octokit", "~> 1.0"
-  gem.add_dependency "activesupport", "~> 3.2.8"
+  gem.add_dependency "activesupport", "~> 4.1.11"
   gem.add_dependency "hirb", "~> 0.7"
 
   gem.executables   = "project-health"
